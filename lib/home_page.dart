@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp2/app_theme.dart';
 import 'package:newsapp2/categories/categories_Page.dart';
+import 'package:newsapp2/categories/category_detail.dart';
+import 'package:newsapp2/categories/category_model.dart';
 import 'package:newsapp2/drawer/home_drawer.dart';
+import 'package:newsapp2/settings/settings_tab.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
   static const String routeName = "home_page";
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,9 +31,36 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text("News"),
         ),
-        drawer: HomeDrawer(),
-        body: CategoriesPage(),
+        drawer: HomeDrawer(
+          onItemSelected: onDrawerSelected,
+        ),
+        /*if i select specific category that means [SelectedCat != null] ,So
+        open CategoryDetail but with specific ID
+        */
+        body: SelectedCat != null
+            ? CategoryDetail(SelectedCat!.id)
+            : drawerSelectedIrem == DrawerItem.categories
+                ? CategoriesPage(
+                    OncategorySelect: onCategorySelected,
+                  )
+                : SettingsTab(),
       ),
     );
+  }
+
+  DrawerItem drawerSelectedIrem = DrawerItem.categories;
+
+  void onDrawerSelected(DrawerItem draweritem) {
+    setState(() {
+      drawerSelectedIrem = draweritem;
+      SelectedCat = null;
+      Navigator.pop(context);
+    });
+  }
+
+  CategoryModel? SelectedCat;
+  void onCategorySelected(CategoryModel category) {
+    SelectedCat = category;
+    setState(() {});
   }
 }

@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:newsapp2/app_theme.dart';
 
 class HomeDrawer extends StatelessWidget {
-  const HomeDrawer({super.key});
+  HomeDrawer({super.key, required this.onItemSelected});
+  void Function(DrawerItem) onItemSelected;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          color: AppTheme.babyblue,
+          color: AppTheme.nevy,
           width: MediaQuery.of(context).size.width * 0.75,
           height: MediaQuery.of(context).size.height * 0.25,
           child: Center(
@@ -42,33 +43,44 @@ class HomeDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Icon(Icons.category_outlined),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Categories",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(color: AppTheme.nevy),
-                        )),
-                  ],
+                GestureDetector(
+                  onTap: () => onItemSelected(DrawerItem.categories),
+                  child: Row(
+                    children: [
+                      Icon(Icons.category_outlined),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        "Categories",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(color: AppTheme.nevy),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    Icon(Icons.settings_outlined),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Settings",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(color: AppTheme.nevy),
-                        )),
-                  ],
+                SizedBox(
+                  height: 15,
+                ),
+                GestureDetector(
+                  onTap: () => onItemSelected(DrawerItem.setting),
+                  child: Row(
+                    children: [
+                      Icon(Icons.settings_outlined),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        "Settings",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(color: AppTheme.nevy),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -77,4 +89,9 @@ class HomeDrawer extends StatelessWidget {
       ],
     );
   }
+}
+
+enum DrawerItem {
+  categories,
+  setting;
 }

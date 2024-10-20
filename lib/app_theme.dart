@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color Primary = Color.fromARGB(255, 98, 170, 199);
+  static const Color Primary = Color.fromARGB(255, 65, 206, 37);
   static const Color black = Color(0xff303030);
   static const Color white = Color(0xffFFFFFF);
   static const Color nevy = Color(0xff4F5A69);
