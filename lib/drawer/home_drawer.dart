@@ -10,7 +10,7 @@ class HomeDrawer extends StatelessWidget {
     return Column(
       children: [
         Container(
-          color: AppTheme.nevy,
+          color: AppTheme.Primary,
           width: MediaQuery.of(context).size.width * 0.75,
           height: MediaQuery.of(context).size.height * 0.25,
           child: Center(
