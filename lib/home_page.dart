@@ -3,6 +3,7 @@ import 'package:newsapp2/app_theme.dart';
 import 'package:newsapp2/categories/categories_Page.dart';
 import 'package:newsapp2/categories/category_detail.dart';
 import 'package:newsapp2/categories/category_model.dart';
+import 'package:newsapp2/categories/futurebuilder_sources.dart';
 import 'package:newsapp2/drawer/home_drawer.dart';
 import 'package:newsapp2/settings/settings_tab.dart';
 
@@ -38,7 +39,9 @@ class _HomePageState extends State<HomePage> {
         open CategoryDetail but with specific ID
         */
         body: SelectedCat != null
-            ? CategoryDetail(SelectedCat!.id)
+            ? FuturebuilderSources(
+                CategoryId: SelectedCat!.id,
+              )
             : drawerSelectedIrem == DrawerItem.categories
                 ? CategoriesPage(
                     OncategorySelect: onCategorySelected,

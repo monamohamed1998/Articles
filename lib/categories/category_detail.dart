@@ -3,18 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:newsapp2/News/news_item.dart';
 import 'package:newsapp2/TabBar/tab_item.dart';
 import 'package:newsapp2/app_theme.dart';
+import 'package:newsapp2/model/news_response/source.dart';
 
 class CategoryDetail extends StatefulWidget {
-  CategoryDetail(this.CategoryId, {super.key});
-  String CategoryId;
+  CategoryDetail({super.key, required this.sources});
+  final List<Source> sources;
 
   @override
   State<CategoryDetail> createState() => _CategoryDetailState();
 }
 
 class _CategoryDetailState extends State<CategoryDetail> {
-  final sources = List.generate(10, (index) => "Sources$index");
-
   int selectedTapIndex = 0;
 
   @override
@@ -23,7 +22,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
       children: [
         //Tabbar should have tabController
         DefaultTabController(
-          length: sources.length,
+          length: widget.sources.length,
           child: TabBar(
               onTap: (index) {
                 setState(() {
@@ -43,10 +42,11 @@ class _CategoryDetailState extends State<CategoryDetail> {
               indicatorPadding: EdgeInsets.only(top: 23, bottom: 3),
               isScrollable: true,
               tabAlignment: TabAlignment.start,
-              tabs: sources
+              tabs: widget.sources
                   .map((source) => TabItem(
-                        sources: source,
-                        isSelected: sources.indexOf(source) == selectedTapIndex,
+                        sources: source.name ?? "",
+                        isSelected:
+                            widget.sources.indexOf(source) == selectedTapIndex,
                       ))
                   .toList()),
         ),
