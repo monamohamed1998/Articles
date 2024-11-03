@@ -3,18 +3,25 @@ import 'package:newsapp2/categories/category_detail.dart';
 import 'package:newsapp2/categories/category_item.dart';
 import 'package:newsapp2/categories/category_model.dart';
 
-class CategoriesPage extends StatelessWidget {
+class CategoriesPage extends StatefulWidget {
   CategoriesPage({super.key, required this.OncategorySelect});
 
   final void Function(CategoryModel) OncategorySelect;
+
+  @override
+  State<CategoriesPage> createState() => _CategoriesPageState();
+}
+
+class _CategoriesPageState extends State<CategoriesPage> {
   final List<CategoryModel> catModel = [
     CategoryModel(
         id: "sports", img: "assets/images/sport.jpg", title: 'Sports'),
-    CategoryModel(id: "sports", img: "assets/images/b.jpg", title: 'Buisness'),
-    CategoryModel(id: "sports", img: "assets/images/h.jpg", title: 'health'),
-    CategoryModel(id: "sports", img: "assets/images/sc.jpg", title: 'science'),
     CategoryModel(
-        id: "sports", img: "assets/images/t.jpg", title: 'technology'),
+        id: "business", img: "assets/images/b.jpg", title: 'Buisness'),
+    CategoryModel(id: "health", img: "assets/images/h.jpg", title: 'health'),
+    CategoryModel(id: "science", img: "assets/images/sc.jpg", title: 'science'),
+    CategoryModel(
+        id: "technology", img: "assets/images/t.jpg", title: 'technology'),
   ];
 
   @override
@@ -25,9 +32,10 @@ class CategoriesPage extends StatelessWidget {
         itemBuilder: (context, index) {
           final category = catModel[index];
           return GestureDetector(
-            onTap: () => OncategorySelect(category),
+            onTap: () => widget.OncategorySelect(category),
             child: CategoryItem(
               categoryModel: catModel[index],
+              index: index,
             ),
           );
         },

@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("News"),
+          title: Text(SelectedCat?.title ?? "News"),
         ),
         drawer: HomeDrawer(
           onItemSelected: onDrawerSelected,

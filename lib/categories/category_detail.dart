@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:newsapp2/News/news_item.dart';
 import 'package:newsapp2/TabBar/tab_item.dart';
 import 'package:newsapp2/app_theme.dart';
-import 'package:newsapp2/model/news_response/source.dart';
+import 'package:newsapp2/model/source_response/source.dart';
+
+import '../News/futurebuilder_news.dart';
 
 class CategoryDetail extends StatefulWidget {
   CategoryDetail({super.key, required this.sources});
@@ -54,10 +56,9 @@ class _CategoryDetailState extends State<CategoryDetail> {
           height: 5,
         ),
         Expanded(
-            child: ListView.builder(
-          itemBuilder: (_, index) => NewsItem(),
-          itemCount: 10,
-        ))
+            child: FuturebuilderNews(
+          sourceid: widget.sources[selectedTapIndex].id ?? "",
+        )),
       ],
     );
   }

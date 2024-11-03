@@ -3,10 +3,10 @@ import 'package:newsapp2/app_theme.dart';
 import 'package:newsapp2/categories/category_model.dart';
 
 class CategoryItem extends StatelessWidget {
-  CategoryItem({super.key, required this.categoryModel});
+  CategoryItem({super.key, required this.categoryModel, required this.index});
 
   CategoryModel categoryModel;
-
+  final index;
   @override
   Widget build(BuildContext context) {
     return Stack(
