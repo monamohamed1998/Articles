@@ -17,7 +17,7 @@ class NewsItemDetails extends StatelessWidget {
       final Uri url = Uri.parse(
         articles.url ?? "",
       );
-      if (!await launchUrl(url, mode: LaunchMode.inAppBrowserView)) {
+      if (!await launchUrl(url, mode: LaunchMode.platformDefault)) {
         throw Exception('Could not launch ${articles.url}');
       }
     }

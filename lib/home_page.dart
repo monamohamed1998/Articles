@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp2/api_manager.dart';
 import 'package:newsapp2/app_theme.dart';
 import 'package:newsapp2/categories/categories_Page.dart';
 import 'package:newsapp2/categories/category_detail.dart';
 import 'package:newsapp2/categories/category_model.dart';
 import 'package:newsapp2/categories/futurebuilder_sources.dart';
 import 'package:newsapp2/drawer/home_drawer.dart';
+import 'package:newsapp2/model/news_response/news/news_response/source.dart';
 import 'package:newsapp2/settings/settings_tab.dart';
+
+import 'search/search_delegate.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -31,6 +35,18 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(SelectedCat?.title ?? "News"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                // built in fun
+                showSearch(
+                  context: context,
+                  delegate: SimpleSearchDelegate(),
+                );
+              },
+            ),
+          ],
         ),
         drawer: HomeDrawer(
           onItemSelected: onDrawerSelected,

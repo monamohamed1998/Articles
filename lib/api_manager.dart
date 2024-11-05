@@ -22,11 +22,16 @@ class ApiManager {
     }
   }
 
-  static Future<NewsResponse> getNews(String sourceId) async {
+  static Future<NewsResponse> getNews(
+    String sourceId,
+  ) async {
     var uri = Uri.https(
       ApiConstants.baseURL,
       ApiConstants.NewsEndPoint,
-      {'apiKey': ApiConstants.apiKey, 'sources': sourceId},
+      {
+        'apiKey': ApiConstants.apiKey,
+        'sources': sourceId,
+      },
     );
     print(uri);
 
@@ -40,5 +45,22 @@ class ApiManager {
     final json = jsonDecode(response.body);
     print("Response JSON: $json");
     return NewsResponse.fromJson(json);
+  }
+
+  static Future<NewsResponse> search(String query) async {
+    final uri = Uri.https(ApiConstants.baseURL, ApiConstants.NewsEndPoint, {
+      'apiKey': ApiConstants.apiKey,
+      'q': query,
+      'pageSize': '20',
+    });
+
+    try {
+      final response = await http.get(uri);
+      //convert the response from string to json then to object
+      final json = jsonDecode(response.body);
+      return NewsResponse.fromJson(json);
+    } catch (e) {
+      throw e;
+    }
   }
 }
