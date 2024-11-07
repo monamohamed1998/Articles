@@ -8,6 +8,7 @@ import 'package:newsapp2/categories/futurebuilder_sources.dart';
 import 'package:newsapp2/drawer/home_drawer.dart';
 import 'package:newsapp2/model/news_response/news/news_response/source.dart';
 import 'package:newsapp2/settings/settings_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'search/search_delegate.dart';
 
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(SelectedCat?.title ?? "News"),
+          title: Text(SelectedCat?.title ?? AppLocalizations.of(context)!.news),
           actions: [
             IconButton(
               icon: Icon(Icons.search),
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                 ? CategoriesPage(
                     OncategorySelect: onCategorySelected,
                   )
-                : SettingsTab(),
+                : SettingTab(),
       ),
     );
   }

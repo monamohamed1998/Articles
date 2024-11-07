@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp2/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeDrawer extends StatelessWidget {
   HomeDrawer({super.key, required this.onItemSelected});
@@ -25,7 +26,7 @@ class HomeDrawer extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                "News App",
+                AppLocalizations.of(context)!.newsapp,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               Spacer(
@@ -52,7 +53,7 @@ class HomeDrawer extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "Categories",
+                        AppLocalizations.of(context)!.categories,
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
@@ -73,7 +74,7 @@ class HomeDrawer extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "Settings",
+                        AppLocalizations.of(context)!.settings,
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge

@@ -22,15 +22,15 @@ class ApiManager {
     }
   }
 
-  static Future<NewsResponse> getNews(
-    String sourceId,
-  ) async {
+  static Future<NewsResponse> getNews(String sourceId, String page) async {
     var uri = Uri.https(
       ApiConstants.baseURL,
       ApiConstants.NewsEndPoint,
       {
         'apiKey': ApiConstants.apiKey,
         'sources': sourceId,
+        'page': page,
+        'pageSize': '10',
       },
     );
     print(uri);

@@ -33,4 +33,26 @@ class AppTheme {
           fontWeight: FontWeight.w400,
         ),
       ));
+
+  static ThemeData darkmode = ThemeData(
+      scaffoldBackgroundColor: Colors.transparent,
+      textTheme: TextTheme(
+          titleLarge: TextStyle(fontSize: 27, color: nevy),
+          bodyLarge: TextStyle(fontSize: 22, color: white),
+          titleSmall: TextStyle(fontSize: 14, color: nevy),
+          bodySmall: TextStyle(
+              fontSize: 14, color: black, fontWeight: FontWeight.w400)),
+      appBarTheme: AppBarTheme(
+        color: Primary,
+        centerTitle: true,
+        foregroundColor: white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30))),
+        titleTextStyle: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.w400,
+        ),
+      ));
 }

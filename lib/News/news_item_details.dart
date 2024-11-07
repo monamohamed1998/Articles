@@ -17,7 +17,7 @@ class NewsItemDetails extends StatelessWidget {
       final Uri url = Uri.parse(
         articles.url ?? "",
       );
-      if (!await launchUrl(url, mode: LaunchMode.platformDefault)) {
+      if (!await launchUrl(url, mode: LaunchMode.inAppWebView)) {
         throw Exception('Could not launch ${articles.url}');
       }
     }
@@ -112,7 +112,7 @@ class NewsItemDetails extends StatelessWidget {
                       ?.copyWith(color: AppTheme.nevy, fontSize: 20),
                 ),
                 Spacer(
-                  flex: 3,
+                  flex: 6,
                 ),
                 GestureDetector(
                   onTap: () {
