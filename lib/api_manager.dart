@@ -8,7 +8,8 @@ import 'package:newsapp2/model/source_response/source.dart';
 
 // https://newsapi.org/v2/top-headlines/sources?apiKey=c319f610e68f4f4bb4e1ef371b44df61
 class ApiManager {
-  static Future<SourceResponse> getSources(CatId) async {
+  static Future<SourceResponse> getSources(CatId,
+      {String language = 'en'}) async {
     Uri url = Uri.https(ApiConstants.baseURL, ApiConstants.sourceEndpoint,
         {'apiKey': ApiConstants.apiKey, 'category': CatId});
 
@@ -22,7 +23,8 @@ class ApiManager {
     }
   }
 
-  static Future<NewsResponse> getNews(String sourceId, String page) async {
+  static Future<NewsResponse> getNews(String sourceId, String page,
+      {String language = 'en'}) async {
     var uri = Uri.https(
       ApiConstants.baseURL,
       ApiConstants.NewsEndPoint,
@@ -31,6 +33,7 @@ class ApiManager {
         'sources': sourceId,
         'page': page,
         'pageSize': '10',
+        'language': language,
       },
     );
     print(uri);

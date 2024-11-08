@@ -30,7 +30,7 @@ class _FuturebuilderNewsState extends State<FuturebuilderNews> {
     });
   }
 
-//when parent rebuilt , set all vars to default
+//when perant rebuilt , set all vars to default
   @override
   void didUpdateWidget(covariant FuturebuilderNews oldWidget) {
     // TODO: implement didUpdateWidget
@@ -44,7 +44,8 @@ class _FuturebuilderNewsState extends State<FuturebuilderNews> {
   Widget build(BuildContext context) {
     print("----->$pageNum");
     return FutureBuilder(
-      future: ApiManager.getNews(widget.sourceid, pageNum.toString()),
+      future: ApiManager.getNews(widget.sourceid, pageNum.toString(),
+          language: 'en'),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting &&
             articles.isEmpty) {

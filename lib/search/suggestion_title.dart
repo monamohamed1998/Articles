@@ -9,15 +9,42 @@ class SuggestionTitle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(text),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(
+              Icons.search,
+              size: 30,
+              color: AppTheme.nevy,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    text,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: true,
+                    maxLines: 2,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
         SizedBox(
           height: 10,
         ),
         Divider(
-          color: AppTheme.Primary,
-          thickness: 1,
-          indent: 10, // Left spacing
-          endIndent: 10, // Right spacing
+          thickness: 0.1,
+          endIndent: 1,
+          indent: 1,
+          // height: 1,
+          color: AppTheme.nevy,
         ),
       ],
     );

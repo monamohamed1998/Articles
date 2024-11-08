@@ -9,7 +9,7 @@ class FuturebuilderSources extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: ApiManager.getSources(CategoryId),
+      future: ApiManager.getSources(CategoryId, language: 'en'),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
