@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:newsapp2/News/news_item.dart';
-import 'package:newsapp2/TabBar/tab_item.dart';
-import 'package:newsapp2/app_theme.dart';
-import 'package:newsapp2/model/source_response/source.dart';
+import 'package:newsapp2/News/view/widgets/news_item.dart';
+import 'package:newsapp2/sources/view/widgets/TabBar/tab_item.dart';
+import 'package:newsapp2/shared/app_theme.dart';
+import 'package:newsapp2/sources/data/models/source.dart';
 
-import '../News/futurebuilder_news.dart';
+import '../../../News/view/widgets/futurebuilder_news.dart';
 
 class CategoryDetail extends StatefulWidget {
   CategoryDetail({super.key, required this.sources});

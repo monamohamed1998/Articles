@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp2/app_theme.dart';
-import 'package:newsapp2/settings/settings_provider.dart';
+import 'package:newsapp2/shared/app_theme.dart';
+import 'package:newsapp2/settings/view_model/settings_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp2/app_theme.dart';
-import 'package:newsapp2/categories/category_model.dart';
+import 'package:newsapp2/shared/app_theme.dart';
+import 'package:newsapp2/categories/data/models/category_model.dart';
 
 class CategoryItem extends StatelessWidget {
   CategoryItem({super.key, required this.categoryModel, required this.index});

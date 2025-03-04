@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp2/app_theme.dart';
-import 'package:newsapp2/model/news_response/news/news_response/article.dart';
+import 'package:newsapp2/shared/app_theme.dart';
+import 'package:newsapp2/News/data/models/article.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
 

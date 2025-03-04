@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp2/api_manager.dart';
-import 'package:newsapp2/app_theme.dart';
-import 'package:newsapp2/categories/categories_Page.dart';
-import 'package:newsapp2/categories/category_detail.dart';
-import 'package:newsapp2/categories/category_model.dart';
-import 'package:newsapp2/categories/futurebuilder_sources.dart';
-import 'package:newsapp2/drawer/home_drawer.dart';
-import 'package:newsapp2/model/news_response/news/news_response/source.dart';
-import 'package:newsapp2/settings/settings_tab.dart';
+import 'package:newsapp2/shared/app_theme.dart';
+import 'package:newsapp2/categories/view/widgets/categories_Page.dart';
+import 'package:newsapp2/categories/view/widgets/category_detail.dart';
+import 'package:newsapp2/categories/data/models/category_model.dart';
+import 'package:newsapp2/sources/view/widgets/futurebuilder_sources.dart';
+import 'package:newsapp2/home/view/widgets/home_drawer.dart';
+import 'package:newsapp2/News/data/models/source.dart';
+import 'package:newsapp2/settings/view/settings_tab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'search/search_delegate.dart';
+import '../../../search/view/widgets/search_delegate.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});

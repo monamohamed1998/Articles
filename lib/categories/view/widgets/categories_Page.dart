@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp2/categories/category_detail.dart';
-import 'package:newsapp2/categories/category_item.dart';
-import 'package:newsapp2/categories/category_model.dart';
+import 'package:newsapp2/categories/view/widgets/category_detail.dart';
+import 'package:newsapp2/categories/view/widgets/category_item.dart';
+import 'package:newsapp2/categories/data/models/category_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoriesPage extends StatefulWidget {

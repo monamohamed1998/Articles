@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp2/api_manager.dart';
-import 'package:newsapp2/app_theme.dart';
-import 'package:newsapp2/model/news_response/news/news_response/source.dart';
-import 'package:newsapp2/search/suggestion_title.dart';
+import 'package:newsapp2/shared/app_theme.dart';
+import 'package:newsapp2/News/data/models/source.dart';
+import 'package:newsapp2/search/view/widgets/suggestion_title.dart';
 
-import '../News/news_item.dart';
-import '../model/news_response/news/news_response/article.dart';
+import '../../../News/view/widgets/news_item.dart';
+import '../../../News/data/models/article.dart';
+import '../../data/data_source/search_data_source.dart';
 
 class SimpleSearchDelegate extends SearchDelegate {
   //search button
@@ -37,7 +37,7 @@ class SimpleSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     return FutureBuilder(
-      future: ApiManager.search(query),
+      future: SearchDataSource.search(query),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
@@ -63,7 +63,8 @@ class SimpleSearchDelegate extends SearchDelegate {
     }
 
     return FutureBuilder(
-      future: ApiManager.search(query), // Same API function as in buildResults
+      future: SearchDataSource.search(
+          query), // Same API function as in buildResults
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
