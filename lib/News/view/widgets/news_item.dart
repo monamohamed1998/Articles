@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp2/News/view/widgets/news_item_details.dart';
 import 'package:newsapp2/shared/app_theme.dart';
@@ -20,24 +21,25 @@ class NewsItem extends StatelessWidget {
           children: [
             ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  articles.urlToImage?.isNotEmpty == true
+                child: CachedNetworkImage(
+                  imageUrl: articles.urlToImage?.isNotEmpty == true
                       ? articles.urlToImage!
                       : "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-15.png",
                   height: MediaQuery.of(context).size.height * 0.25,
                   width: double.infinity,
                   fit: BoxFit.fill,
-                  errorBuilder: (BuildContext context, Object error,
-                      StackTrace? stackTrace) {
-                    return Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      width: double.infinity,
-                      color: Colors.grey[200],
-                      child: Center(
-                        child: Text('No Image'),
-                      ),
-                    );
-                  },
+                  placeholder: (context, url) => Container(
+                      width: 40,
+                      height: 40,
+                      child: Center(child: const CircularProgressIndicator())),
+                  errorWidget: (context, url, error) => Container(
+                    height: MediaQuery.of(context).size.height * 0.25,
+                    width: double.infinity,
+                    color: Colors.grey[200],
+                    child: Center(
+                      child: Text('No Image'),
+                    ),
+                  ),
                 )),
             SizedBox(
               height: 7,

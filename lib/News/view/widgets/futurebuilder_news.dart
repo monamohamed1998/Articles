@@ -5,7 +5,7 @@ import 'package:newsapp2/News/data/models/source.dart';
 import 'package:newsapp2/News/view_model/news_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../data/data_source/news_data_source.dart';
+import '../../data/data_source/news_api_data_source.dart';
 
 class FuturebuilderNews extends StatefulWidget {
   FuturebuilderNews({super.key, required this.sourceid});

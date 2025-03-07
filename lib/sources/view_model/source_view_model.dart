@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:newsapp2/sources/data/data_sources/sources_data_source.dart';
+import 'package:newsapp2/sources/data/data_sources/sources_api_data_source.dart';
 import 'package:newsapp2/sources/data/models/source.dart';
 
+import '../../shared/service_locator.dart';
+import '../data/repository/sources_repo.dart';
+
 class SourceViewModel with ChangeNotifier {
-  final datasource = SourcesDataSource();
+  final repo = SourcesRepo(ServiceLocator.dataSource);
   List<Source> sources = [];
   //maybe there is error , maybe not
   String? errorMessage;
@@ -14,14 +17,8 @@ class SourceViewModel with ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    //get instance from the model
     try {
-      final response = await datasource.getSources(CatId);
-      if (response.status == 'ok' && response.sources != null) {
-        sources = response.sources!;
-      } else {
-        errorMessage = "Failed to load sources";
-      }
+      sources = await repo.getSources(CatId);
     } catch (error) {
       errorMessage = error.toString();
     }

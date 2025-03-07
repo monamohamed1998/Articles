@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp2/shared/api_constants.dart';
-import 'package:newsapp2/sources/data/data_sources/sources_data_source.dart';
+import 'package:newsapp2/sources/data/data_sources/sources_api_data_source.dart';
 import 'package:newsapp2/categories/view/widgets/category_detail.dart';
 import 'package:newsapp2/sources/view_model/source_view_model.dart';
 import 'package:provider/provider.dart';
