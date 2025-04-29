@@ -6,7 +6,8 @@ import '../../shared/service_locator.dart';
 import '../data/repository/news_repo.dart';
 
 class NewsViewModel with ChangeNotifier {
-  final repo = NewsRepo(ServiceLocator.newsdataSource);
+  final NewsRepo newsrepo;
+  NewsViewModel() : newsrepo = NewsRepo(ServiceLocator.newsdataSource);
   bool isLoading = false;
   String? errorMessage;
   List<Article> atricles = [];
@@ -21,7 +22,7 @@ class NewsViewModel with ChangeNotifier {
     }
     //get instance from the model
     try {
-      atricles = await repo.getNews(sourceID, page);
+      atricles = await newsrepo.getNews(sourceID, page);
       // print("Response articles: ${news[2].description}"); // ✅ شوفي هل في بيانات
     } catch (error) {
       errorMessage = error.toString();

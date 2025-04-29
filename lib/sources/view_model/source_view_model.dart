@@ -7,7 +7,8 @@ import '../../shared/service_locator.dart';
 import '../data/repository/sources_repo.dart';
 
 class SourceViewModel with ChangeNotifier {
-  final repo = SourcesRepo(ServiceLocator.dataSource);
+  final SourcesRepo repo;
+  SourceViewModel() : repo = SourcesRepo(ServiceLocator.dataSource);
   List<Source> sources = [];
   //maybe there is error , maybe not
   String? errorMessage;
