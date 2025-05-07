@@ -31,7 +31,6 @@ void main() {
         providers: [
           BlocProvider(create: (_) => NewsViewModel()),
           BlocProvider(create: (_) => SourceViewModel()),
-          // أضف المزيد من Cubits لو عندك
         ],
         child: MyApp(),
       ),
