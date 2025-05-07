@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsapp2/News/view/widgets/news_item.dart';
 import 'package:newsapp2/News/data/models/article.dart';
 import 'package:newsapp2/News/data/models/source.dart';
+import 'package:newsapp2/News/view_model/news_state.dart';
 import 'package:newsapp2/News/view_model/news_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +26,9 @@ class _FuturebuilderNewsState extends State<FuturebuilderNews> {
 
   @override
   //do this once and onlyyy when the screen opened
-  void initState() {}
+  void initState() {
+    newsViewModel.getNews(widget.sourceid);
+  }
 
 //when perant rebuilt , set all vars to default
   @override
@@ -46,21 +50,21 @@ class _FuturebuilderNewsState extends State<FuturebuilderNews> {
       }
     });
     print("----->$pageNum");
-    return ChangeNotifierProvider(
+    return BlocProvider(
         create: (_) => newsViewModel,
-        child: Consumer<NewsViewModel>(builder: (_, NewsViewModel, __) {
-          if (newsViewModel.isLoading && articles.isEmpty) {
+        child: BlocBuilder<NewsViewModel, NewsState>(builder: (context, state) {
+          if (state is NewsLoading) {
             return Center(child: CircularProgressIndicator());
-          } else if (newsViewModel.errorMessage != null) {
+          } else if (state is NewsError) {
             return Text(" someting went wrong view error");
-          } else {
-            if ((newsViewModel.atricles).isNotEmpty) {
+          } else if (state is NewsSuccess) {
+            if ((state.articles).isNotEmpty) {
               //to handle short page
-              if (newsViewModel.atricles.length < 10) {
+              if ((state.articles).length < 10) {
                 lastPage = true;
                 print("----------short");
               }
-              articles.addAll(newsViewModel.atricles);
+              articles.addAll(state.articles);
             } else {
               //to handle empty page
               lastPage = true;
@@ -74,6 +78,8 @@ class _FuturebuilderNewsState extends State<FuturebuilderNews> {
               ),
               itemCount: articles.length,
             );
+          } else {
+            return SizedBox();
           }
         }));
 

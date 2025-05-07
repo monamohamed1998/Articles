@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsapp2/shared/api_constants.dart';
 import 'package:newsapp2/sources/data/data_sources/sources_api_data_source.dart';
 import 'package:newsapp2/categories/view/widgets/category_detail.dart';
 import 'package:newsapp2/sources/view_model/source_view_model.dart';
+import 'package:newsapp2/sources/view_model/sources_state.dart';
 import 'package:provider/provider.dart';
 
 class FuturebuilderSources extends StatefulWidget {
@@ -28,19 +30,20 @@ class _FuturebuilderSourcesState extends State<FuturebuilderSources> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return BlocProvider(
         create: (_) => viewModel,
-        //consumer is same as provider but it gives ability to be a listner and using futurebuilder
-        child: Consumer<SourceViewModel>(builder: (_, viewModel, __) {
-          if (viewModel.isLoading)
+        child: BlocBuilder<SourceViewModel, SourcesState>(
+            builder: (context, State) {
+          if (State is SourceLoading)
             return Center(child: const CircularProgressIndicator());
-          else if (viewModel.errorMessage != null)
+          else if (State is SourceError)
             return Text(" someting went wrong ");
-          else {
+          else if (State is SourceSucsses) {
             return CategoryDetail(
-              sources: viewModel.sources,
+              sources: State.sources,
             );
-          }
+          } else
+            return SizedBox();
         }));
   }
 }
